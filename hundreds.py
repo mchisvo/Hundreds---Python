@@ -18,14 +18,9 @@ def human_move(computer_score, human_score):
 
     while not finished:
 
+        game_status(computer_score, human_score)
 
-
-        print("Computers Score =  " + str(computer_score) + "\n")
-        print("Human Score =  " + str(human_score))
-        difference = human_score - computer_score
-        print("The scores difference is " + str(difference))
-
-        print("Would you like to roll?", end='' )
+        print("Would you like to roll? ", end='' )
         user_choice = input()
         if user_choice in roll_again:
 
@@ -34,12 +29,51 @@ def human_move(computer_score, human_score):
             print(roll_number, turn_total)
         else:
             finished = True
+# Update human score - maybe just return human score and only print the turn total.
+    return turn_total
+
+def game_status(computer_score, human_score):
+    """Function to print game status"""
+    print("Computers Score =  " + str(computer_score) + "\n")
+    print("Human Score =  " + str(human_score))
+    difference = human_score - computer_score
+    print("The scores difference is " + str(difference))
+
+
+
+def computer_move(computer_score,human_score):
+
+    turn_total = 0  # Initialize turn total variable for function
+    # Ad risk logic. i.e compyer decides to only try 4 rolls instead of 10 when its ahead
+    times = random.randint(1, 10)
+    time = 0
+    finished = False
+
+    while not finished:
+
+        game_status(computer_score, human_score)
+
+        if time != times:
+
+            roll_number = roll()
+            turn_total = turn_total + roll_number
+            print(roll_number, turn_total)
+            if roll_number == 1:
+                finished = True
+            else:
+                time = time + 1
+        else:
+            finished = True
+
 
 def main():
-    # Global variables
+    # main function variables
     computer_score = 0
     human_score = 0
 
+    computer_move(computer_score, human_score)
+
     human_move(computer_score, human_score)
 
+    print(computer_score, human_score) # How do you bring the function variables out
 main()
