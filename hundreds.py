@@ -8,7 +8,6 @@ def roll():
     return roll
 
 
-
 def human_move(computer_score, human_score):
     #turn variables
     turn_total = 0 # Initialize turn total variable for function
@@ -25,6 +24,7 @@ def human_move(computer_score, human_score):
         if user_choice in roll_again:
 
             roll_number = roll()
+
             turn_total = turn_total + roll_number
             print(roll_number, turn_total)
         else:
@@ -45,25 +45,29 @@ def computer_move(computer_score,human_score):
 
     turn_total = 0  # Initialize turn total variable for function
     # Ad risk logic. i.e compyer decides to only try 4 rolls instead of 10 when its ahead
-    times = random.randint(1, 10)
-    time = 0
+    roll_limit = random.randint(1, 10)
+    die_roll_count = 0 #
     finished = False
 
     while not finished:
-
         game_status(computer_score, human_score)
-
-        if time != times:
-
+        if die_roll_count != roll_limit:
             roll_number = roll()
             turn_total = turn_total + roll_number
             print(roll_number, turn_total)
             if roll_number == 1:
                 finished = True
+                turn_total = 0
+                print(roll_number, turn_total)
             else:
-                time = time + 1
+                turn_total = turn_total + roll_number
+                die_roll_count += 1
         else:
             finished = True
+
+    computer_score = computer_score + turn_total
+    return computer_score
+
 
 
 def main():
@@ -71,9 +75,9 @@ def main():
     computer_score = 0
     human_score = 0
 
-    computer_move(computer_score, human_score)
+    computer_score = computer_move(computer_score, human_score)
 
-    human_move(computer_score, human_score)
+    human_score = human_move(computer_score, human_score)
 
     print(computer_score, human_score) # How do you bring the function variables out
 main()
