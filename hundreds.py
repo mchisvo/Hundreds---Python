@@ -8,8 +8,16 @@ def roll():
     return roll
 
 
+def game_status(computer_score, human_score):
+    """Function to print game status"""
+    print("Computers Score =  " + str(computer_score) + "\n")
+    print("Human Score =  " + str(human_score))
+    difference = human_score - computer_score
+    print("The scores difference is " + str(difference))
+
+
 def human_move(computer_score, human_score):
-    #turn variables
+    # turn variables
     turn_total = 0 # Initialize turn total variable for function
     finished = False
     # Constants
@@ -19,7 +27,7 @@ def human_move(computer_score, human_score):
 
         game_status(computer_score, human_score)
 
-        print("Would you like to roll? ", end='' )
+        print("Would you like to roll? ", end='')
         user_choice = input()
         if user_choice in roll_again:
 
@@ -31,14 +39,6 @@ def human_move(computer_score, human_score):
             finished = True
 # Update human score - maybe just return human score and only print the turn total.
     return turn_total
-
-def game_status(computer_score, human_score):
-    """Function to print game status"""
-    print("Computers Score =  " + str(computer_score) + "\n")
-    print("Human Score =  " + str(human_score))
-    difference = human_score - computer_score
-    print("The scores difference is " + str(difference))
-
 
 
 def computer_move(computer_score,human_score):
