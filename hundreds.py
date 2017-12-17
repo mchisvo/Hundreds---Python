@@ -28,13 +28,18 @@ def human_move(computer_score, human_score):
         game_status(computer_score, human_score)
 
         print("Would you like to roll? ", end='')
-        user_choice = input()
+        user_choice = input() # Make this tidier
         if user_choice in roll_again:
 
             roll_number = roll()
+            if roll_number == 1:
+                finished = True
+                turn_total = 0
+                print(roll_number, turn_total)
+            else:
 
-            turn_total = turn_total + roll_number
-            print(roll_number, turn_total)
+                turn_total = turn_total + roll_number
+                print(roll_number, turn_total)
         else:
             finished = True
 # Update human score - maybe just return human score and only print the turn total.
