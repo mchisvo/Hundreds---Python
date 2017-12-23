@@ -102,7 +102,14 @@ def is_game_over(computer_score, human_score):
         return False
 
 
-
+def show_results(computer_score, human_score):
+    print("**************************" + "\n")
+    print("The Computer scored: " + str(computer_score) + "\n")
+    print("You scored: " + str(human_score) + "\n")
+    if computer_score > human_score:
+        print("YOU LOST :( !")
+    else:
+        print("YOU WON :) !")
 
 def main():
     # main function variables
@@ -120,7 +127,7 @@ def main():
             finished = is_game_over(computer_score, human_score)
 
 
-    print(computer_score, human_score)
+    show_results(computer_score, human_score)
 
 
 
