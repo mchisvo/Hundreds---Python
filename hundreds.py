@@ -117,6 +117,7 @@ def computer_move(computer_score,human_score):
     computer_score = computer_score + move_total
     return computer_score
 
+
 def roll():
     """A function to generate the random number when a dice is rolled."""
 
@@ -143,6 +144,7 @@ def show_results(computer_score, human_score):
         print("YOU LOST :( !")
     else:
         print("YOU WON :) !")
+
 
 def main():
     """The main function executes the game and displays the winner at the end."""
