@@ -55,11 +55,19 @@ def human_move(computer_score, human_score):
     return human_score
 
 
+def computer_risk(computer_score, human_score):
+    difference = computer_score - human_score
+    if difference < 0 and abs(difference) > 20:
+        print("yes")
+        roll_limit = random.randint(4, 8)
+    else:
+        roll_limit = random.randint(1, 4)
+    return roll_limit
+
+
 def computer_move(computer_score,human_score):
-    #game_status(computer_score, human_score) # instead use the human scored to detrmine difference and then risk
     move_total = 0  # Initialize turn total variable for function
-    # Ad risk logic. i.e compyer decides to only try 4 rolls instead of 10 when its ahead
-    roll_limit = random.randint(1, 3)
+    roll_limit = computer_risk(computer_score, human_score)
     die_roll_count = 0
     finished = False
     while not finished:
@@ -92,6 +100,8 @@ def is_game_over(computer_score, human_score):
         return True
     else:
         return False
+
+
 
 
 def main():
