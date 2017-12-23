@@ -3,11 +3,14 @@ import random
 
 def game_status(computer_score, human_score):
     """Function to print game status"""
-    breaker()
+
     print("Computers Score =  " + str(computer_score) + "\n")
     print("Human Score =  " + str(human_score) + "\n")
     difference = human_score - computer_score
-    print("The scores difference is " + str(difference)+ "\n")
+    if difference < 0:
+        print("The computer is winning by " + str(abs(difference)) + "\n")
+    else:
+        print("You are winning by " + str(abs(difference)) + "\n")
     breaker()
 
 
@@ -20,14 +23,14 @@ def breaker():
 def ask_yes_or_no(prompt):
     roll_again = ('y', 'Y')
     stop_turn = ('n', 'N')
-
-    if prompt in roll_again:
-        return True
-    elif prompt in stop_turn:
-        return False
-    else:
-        print("wrong")
-
+    while True:
+        if prompt in roll_again:
+            return True
+        elif prompt in stop_turn:
+            return False
+        else:
+            prompt = input("Would you like to roll?: ")
+            continue
 
 
 def human_move(computer_score, human_score):
@@ -51,7 +54,7 @@ def human_move(computer_score, human_score):
             breaker()
             finished = True
     human_score = human_score + move_total
-    game_status(computer_score, human_score)
+    #game_status(computer_score, human_score)
     return human_score
 
 
