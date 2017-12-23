@@ -146,12 +146,11 @@ def show_results(computer_score, human_score):
 
 def main():
     """The main function executes the game and displays the winner at the end."""
-    # main function variables
+
     computer_score = 0
     human_score = 0
     finished = False
     instructions()
-
     while not finished:
         computer_score = computer_move(computer_score, human_score)
         if computer_score >= 100:
