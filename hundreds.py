@@ -87,7 +87,7 @@ def computer_risk(computer_score, human_score):
     if difference < 0 and abs(difference) > 20:
         roll_limit = random.randint(4, 8)
     else:
-        roll_limit = random.randint(1, 4)
+        roll_limit = random.randint(2, 5)
     return roll_limit
 
 
@@ -137,6 +137,7 @@ def is_game_over(computer_score, human_score):
 
 def show_results(computer_score, human_score):
     """Shows the final result of the game and identifies the winner."""
+
     print("**************************" + "\n")
     print("The Computer scored: " + str(computer_score) + "\n")
     print("You scored: " + str(human_score) + "\n")
