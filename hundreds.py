@@ -70,12 +70,12 @@ def human_move(computer_score, human_score):
                 breaker()
                 finished = True
             else:
-                move_total = move_total + roll_number
+                move_total += roll_number
         else:
             print("You scored " + str(move_total) + " this move")
             breaker()
             finished = True
-    human_score = human_score + move_total
+    human_score += move_total
     return human_score
 
 
@@ -84,7 +84,8 @@ def computer_risk(computer_score, human_score):
     by too much it will begin to roll the dice more times."""
 
     difference = computer_score - human_score
-    if difference < 0 and abs(difference) > 20:
+    if difference < 0 and abs(difference) > 20 or (100 - human_score) <= 15:
+        print("Computer is being risky")
         roll_limit = random.randint(4, 8)
     else:
         roll_limit = random.randint(2, 5)
@@ -100,21 +101,21 @@ def computer_move(computer_score,human_score):
     die_roll_count = 0
     finished = False
     while not finished:
-        if die_roll_count != roll_limit:
+        if die_roll_count != roll_limit and (move_total + computer_score) < 100:
             roll_number = roll()
             print("The computer rolled a: " + str(roll_number))
             if roll_number == 1:
                 finished = True
                 move_total = 0
             else:
-                move_total = move_total + roll_number
+                move_total += roll_number
                 die_roll_count += 1
         else:
             print("Computer scored " + str(move_total) + " this move")
             breaker()
             finished = True
 
-    computer_score = computer_score + move_total
+    computer_score += move_total
     return computer_score
 
 
